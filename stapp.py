@@ -2,6 +2,7 @@ import streamlit as st
 from PyPDF2 import PdfReader
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 import os
+import shutil
 
 from langchain_google_genai import GoogleGenerativeAIEmbeddings, ChatGoogleGenerativeAI
 import google.generativeai as genai
@@ -23,7 +24,14 @@ def get_pdf_text(pdf_file):
     for file in pdf_file:
         pdf_reader = PdfReader(file)
         for page in pdf_reader.pages:
-            text += page.extract_text()
+            try:
+                page_text = page.extract_text()
+                if page_text:
+                    text += page_text
+            except Exception as e:
+                st.warning(f"Could not read a page in the PDF: {e}")
+    if not text.strip():
+        st.error("No extractable text found in the uploaded PDF.")
     return text
 
 
@@ -86,6 +94,11 @@ def main():
                 with st.spinner("Processing PDF..."):
                     text = get_pdf_text(pdf_file)
                     chunks = get_text_chunks(text)
+
+                    # 🚨 Delete old vector store to avoid loading previous PDFs
+                    if os.path.exists("faiss_index"):
+                        shutil.rmtree("faiss_index")
+
                     get_vector_store(chunks)
                     st.success("PDF processed and vector store created.")
                     st.session_state.question_count = 0
