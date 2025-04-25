@@ -3,6 +3,7 @@ from PyPDF2 import PdfReader
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 import os
 import shutil
+import tempfile
 
 from langchain_google_genai import GoogleGenerativeAIEmbeddings, ChatGoogleGenerativeAI
 import google.generativeai as genai
@@ -48,6 +49,12 @@ def get_vector_store(chunks):
     embeddings = GoogleGenerativeAIEmbeddings(model='models/embedding-001')
     vector_store = FAISS.from_texts(chunks, embeddings)
     vector_store.save_local("faiss_index")
+    
+    with tempfile.TemporaryDirectory() as tmpdir:
+        vector_store.save_local(tmpdir)
+        st.session_state["faiss_path"] = tmpdir  # store path in session state
+    return vector_store
+        
     return vector_store
 
 def get_conversational_chain():
