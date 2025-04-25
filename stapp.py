@@ -73,9 +73,12 @@ def get_conversational_chain():
 
 
 def user_input(user_question):
+    if "faiss_path" not in st.session_state:
+        st.error("No PDF has been processed in this session. Please upload a PDF first.")
+        return
     embeddings = GoogleGenerativeAIEmbeddings(model='models/embedding-001')
     try:
-        new_db = FAISS.load_local("faiss_index", embeddings, allow_dangerous_deserialization=True)
+        new_db = FAISS.load_local("faiss_path", embeddings, allow_dangerous_deserialization=True)
     except FileNotFoundError:
         st.error("Vector store not found. Please process the PDF first.")
         return
