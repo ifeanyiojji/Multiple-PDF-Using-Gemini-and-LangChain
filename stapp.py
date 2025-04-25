@@ -81,7 +81,7 @@ def user_input(user_question):
         return
     embeddings = GoogleGenerativeAIEmbeddings(model='models/embedding-001')
     try:
-        new_db = FAISS.load_local("faiss_path", embeddings, allow_dangerous_deserialization=True)
+        new_db = FAISS.load_local(st.session_state["faiss_path"], embeddings, allow_dangerous_deserialization=True)
     except FileNotFoundError:
         st.error("Vector store not found. Please process the PDF first.")
         return
