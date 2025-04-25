@@ -98,16 +98,13 @@ def user_input(user_question):
 def main():
     st.set_page_config("Chat with Multiple PDF")
     st.header("📄 Chat with Multiple PDF Using Gemini & LangChain")
-
-    # Helpful hint for mobile users
-    st.info("📱 On mobile? Tap the '≡' menu at the top-left to upload your PDF.")
     
     # Session state init
     if "question_count" not in st.session_state:
         st.session_state.question_count = 0
 
     # Mobile-friendly PDF uploader
-    with st.expander("📂 Upload PDF Here (Mobile Friendly)"):
+    with st.expander("📂 Upload PDF Here"):
         mobile_pdf = st.file_uploader("Upload PDF(s)", type="pdf", accept_multiple_files=True, key="mobile_upload")
         if st.button("🚀 Process PDF", key="mobile_process"):
             if mobile_pdf:
@@ -120,21 +117,6 @@ def main():
                         st.session_state.question_count = 0
             else:
                 st.warning("Please upload at least one PDF.")
-
-    # Sidebar for desktop users
-    with st.sidebar:
-        st.title("Menu")
-        pdf_file = st.file_uploader("Upload PDF", type="pdf", accept_multiple_files=True, key="desktop_upload")
-        if st.button("Process PDF", key="desktop_process"):
-            if pdf_file:
-                with st.spinner("Processing PDF..."):
-                    text = get_pdf_text(pdf_file)
-                    chunks = get_text_chunks(text)
-                    get_vector_store(chunks)
-                    st.success("PDF processed and vector store created.")
-                    st.session_state.question_count = 0
-            else:
-                st.error("Please upload a PDF file.")
 
     # User question interface
     user_question = st.text_input("❓ Ask a question about your uploaded PDF:")
