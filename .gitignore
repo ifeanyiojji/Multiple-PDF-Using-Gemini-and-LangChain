@@ -8,7 +8,7 @@ env/
 
 # Ignore FAISS index storage
 faiss_index/
-.toml
+secrets.toml
 
 # Ignore OS-specific files
 .DS_Store
