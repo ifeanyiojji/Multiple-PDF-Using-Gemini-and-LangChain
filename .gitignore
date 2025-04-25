@@ -8,6 +8,8 @@ env/
 
 # Ignore FAISS index storage
 faiss_index/
+temp_faiss/
+
 
 #Ignore Secrets files
 secrets.toml
