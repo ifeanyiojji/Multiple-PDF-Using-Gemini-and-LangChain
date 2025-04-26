@@ -96,8 +96,8 @@ def user_input(user_question):
 
 
 def main():
-    st.set_page_config("Chat with Multiple PDF")
-    st.header("📄 Chat with Multiple PDF Using Gemini & LangChain")
+    st.set_page_config("Chat_PDF")
+    st.header("📄 Chat with Multiple PDF")
     
     # Session state init
     if "question_count" not in st.session_state:
