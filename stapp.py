@@ -96,7 +96,7 @@ def user_input(user_question):
 
 
 def main():
-    st.set_page_config("Chat_PDF")
+    st.set_page_config("Chat_With_PDF")
     st.header("📄 Chat with Multiple PDF")
     
     # Session state init
