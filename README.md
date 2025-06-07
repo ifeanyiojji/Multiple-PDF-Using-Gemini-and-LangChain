@@ -51,19 +51,19 @@ streamlit run stapp.py
 - You have 3 attempts to ask questions per session.
 - The app will provide answers based on the PDF content using semantic search and    language modeling.
 
-📄 ##File Structure
+📄 ## File Structure
 - `stapp.py` — Main Streamlit app script with the chatbot logic and UI.
 - `requirements.txt` — Python dependencies.
 - `README.md` — Project documentation.
 - Other supporting files as needed.
 
-⚠️ ##Limitations & Known Issues
+⚠️ ## Limitations & Known Issues
 -The 3 tries limit per session might restrict extended conversations.
 -Depends on quality and clarity of PDF content for accuracy.
 -No offline mode; requires internet connection for language model API.
 -Currently optimized for English PDFs only.
 
-🌟 ##Future Improvements
+🌟 ## Future Improvements
 -Add user authentication and session management.
 -Extend try limit or allow paid tiers for extended usage.
 -Support additional document formats (Word, TXT).
