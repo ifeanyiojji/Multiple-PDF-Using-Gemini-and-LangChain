@@ -70,8 +70,8 @@ streamlit run stapp.py
 -Improve multi-turn conversation context retention.
 -Enhance UI/UX for smoother interaction.
 
-##👤Author
+## 👤Author
 Developed by Ifeanyi Ojji
 
-📜 ## License
+## 📜 License
 This project is licensed under the MIT License
