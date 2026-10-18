@@ -4,7 +4,7 @@ A chatbot application that enables interactive Q&A over multiple PDF documents u
 
 ---
 
-## 🔍 Project Overview
+## Project Overview
 
 This app allows users to upload multiple PDF files and chat with the system to get answers extracted from the documents. It leverages:
 
@@ -14,7 +14,7 @@ This app allows users to upload multiple PDF files and chat with the system to g
 
 ---
 
-## ⚙️ Features
+## Features
 
 - Supports uploading and querying multiple PDF documents simultaneously.
 - Uses semantic search with embeddings for accurate information retrieval.
@@ -23,7 +23,7 @@ This app allows users to upload multiple PDF files and chat with the system to g
 
 ---
 
-## 🛠️ Installation
+## Installation
 
 1. Clone the repository:
 
@@ -38,7 +38,7 @@ This app allows users to upload multiple PDF files and chat with the system to g
 3. Make sure you have API keys and environment variables configured as needed for Gemini or LangChain (update .env or environment accordingly).
 
 
-## 🚀 Usage
+## Usage
 
 Run the main application:
 
@@ -51,26 +51,26 @@ streamlit run stapp.py
 - You have 3 attempts to ask questions per session.
 - The app will provide answers based on the PDF content using semantic search and    language modeling.
 
-## 📄File Structure
+## File Structure
 - `stapp.py` — Main Streamlit app script with the chatbot logic and UI.
 - `requirements.txt` — Python dependencies.
 - `README.md` — Project documentation.
 - Other supporting files as needed.
 
-## ⚠️Limitations & Known Issues
+## Limitations & Known Issues
 -The 3 tries limit per session might restrict extended conversations.
 -Depends on quality and clarity of PDF content for accuracy.
 -No offline mode; requires internet connection for language model API.
 -Currently optimized for English PDFs only.
 
-## 🌟Future Improvements
+## Future Improvements
 -Add user authentication and session management.
 -Extend try limit or allow paid tiers for extended usage.
 -Support additional document formats (Word, TXT).
 -Improve multi-turn conversation context retention.
 -Enhance UI/UX for smoother interaction.
 
-## 👤Author
+## Author
 Developed by Ifeanyi Ojji
 
 ## 📜 License
